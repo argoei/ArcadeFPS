@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<title>ARCADE FPS</title>
+<!-- 空 favicon：阻止浏览器自动请求 /favicon.ico 产生一条 404 控制台噪声 -->
+<link rel="icon" href="data:,">
+<style>
+  html, body {
+    margin: 0; padding: 0; width: 100%; height: 100%;
+    overflow: hidden; background: #12141a;
+    /* 桌面图标需要点得中：禁掉选中高亮，避免壁纸层上出现图标选中蓝框 */
+    -webkit-user-select: none; user-select: none;
+    cursor: default;
+  }
+  body.playing { cursor: none; }
+  #gl { display: block; width: 100%; height: 100%; }
+  /* 壁纸态的起始遮罩：避免挂载前闪一下底色 */
+  #veil {
+    position: fixed; inset: 0; background: #12141a; z-index: 50;
+    transition: opacity .45s ease-out; pointer-events: none;
+  }
+  body.revealed #veil { opacity: 0; }
+</style>
+</head>
+<body>
+  <canvas id="gl"></canvas>
+  <div id="veil"></div>
+  <script type="module" src="js/main.js"></script>
+  <script>
+    // 页面 ready 后移除遮罩（宿主也会调用 window.wallpaper.reveal()）
+    setTimeout(() => document.body.classList.add('revealed'), 260);
+  </script>
+</body>
+</html>

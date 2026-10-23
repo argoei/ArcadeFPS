@@ -1,0 +1,24 @@
+# 构建产物
+bin/
+obj/
+dist/
+release/
+*.user
+*.suo
+.vs/
+
+# 依赖安装器（按 README 从官方地址下载，不进版本库）
+deps/
+
+# 安装器编译日志
+installer/*.log
+
+# 开发过程文件：调试截图、临时诊断输出，不进公开仓库
+shots/
+tools/*.log
+*.log
+
+# 系统与编辑器
+Thumbs.db
+desktop.ini
+.DS_Store
